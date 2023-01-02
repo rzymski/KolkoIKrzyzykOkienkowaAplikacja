@@ -164,7 +164,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
                 this.TopMost= false;
                 if(wayToWin == -1)
                 {
-                    lblTurnDisplay.Text = "Gra zakonczona remisem.";
+                    lblTurnDisplay.Text = "Remis";
                     choice = MyOwnMessageClass.ShowMessage("Remis", "Wynik gry");
                 }
                 else if (symbolValue == 0)
@@ -196,7 +196,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             flowLayoutPanel1.Location = new Point(width/5, height/7);
-            flowLayoutPanel1.Size= new Size((int)(width*6/10), (int)(height*8/10));
+            flowLayoutPanel1.Size= new Size((int)(width*6/10), (int)(height*85/100));
         }
 
         private void lblTurnDisplay_Paint(object sender, PaintEventArgs e)
@@ -208,7 +208,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
         private void btnExit_Paint(object sender, PaintEventArgs e)
         {
             btnExit.Size = new Size(50, 50);
-            btnExit.Location = new Point(width - btnExit.Width - 30, 30);
+            btnExit.Location = new Point(width - btnExit.Width - 35, 30);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

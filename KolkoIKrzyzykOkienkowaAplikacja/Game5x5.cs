@@ -116,7 +116,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             for(int i=0; i< chessSize*chessSize; i++)
             {
                 Button btn= new Button();
-                btn.Size = new Size((int)(width*6/10/(chessSize+0.1)), (int)(height*8/10/(chessSize+0.1)));
+                btn.Size = new Size((int)(width*6/10/(chessSize+0.2)), (int)(height*8/10/(chessSize+0.1)));
                 btn.Text = "";//i.ToString();
                 btn.Click += btn_Click;
                 flowLayoutPanel1.Controls.Add(btn);
@@ -165,7 +165,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
                 this.TopMost= false;
                 if(wayToWin == -1)
                 {
-                    lblTurnDisplay.Text = "Gra zakonczona remisem.";
+                    lblTurnDisplay.Text = "Remis";
                     choice = MyOwnMessageClass.ShowMessage("Remis", "Wynik gry");
                 }
                 else if (symbolValue == 0)
@@ -196,8 +196,8 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            flowLayoutPanel1.Location = new Point(width/5, height/7);
-            flowLayoutPanel1.Size= new Size((int)(width*6/10), (int)(height*8/10));
+            flowLayoutPanel1.Location = new Point((int)(width/5), height/7);
+            flowLayoutPanel1.Size= new Size((int)(width*6/10), (int)(height*85/100));
         }
 
         private void lblTurnDisplay_Paint(object sender, PaintEventArgs e)
