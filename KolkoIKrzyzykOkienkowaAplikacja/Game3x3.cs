@@ -34,6 +34,29 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             setStartedParameters();
         }
 
+        public Game3x3(int width, int height, NecessaryData startData)
+        {
+            InitializeComponent();
+            this.width = width;
+            this.height = height;
+            setStartedParameters(startData);
+        }
+
+        private void setStartedParameters(NecessaryData data)
+        {
+            this.Size = new Size(width, height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            maxScreenResolution();
+            board2D = data.board;
+            moveCount = data.pmoveCount;
+            symbolValue = data.psymbolValue;
+            if (symbolValue == 0)
+                symbol = "O";
+            else
+                symbol = "X";
+            lblTurnDisplay.Text = "Ruch: " + symbol;
+        }
+
         private void setStartedParameters()
         {
             this.Size = new Size(width, height);
@@ -225,30 +248,6 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 FileWithData.Save(saveFileDialog.FileName, saveData);
-        }
-
-        public Game3x3(int width, int height, NecessaryData startData)
-        {
-            InitializeComponent();
-            this.width = width;
-            this.height = height;
-            setStartedParameters(startData);
-        }
-
-
-        private void setStartedParameters(NecessaryData data)
-        {
-            this.Size = new Size(width, height);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            maxScreenResolution();
-            board2D = data.board;
-            moveCount = data.pmoveCount;
-            symbolValue = data.psymbolValue;
-            if (symbolValue == 0)
-                symbol = "O";
-            else
-                symbol = "X";
-            lblTurnDisplay.Text = "Ruch: " + symbol;
         }
     }
 }

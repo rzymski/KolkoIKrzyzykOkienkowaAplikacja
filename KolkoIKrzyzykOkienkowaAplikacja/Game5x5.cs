@@ -34,6 +34,29 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             setStartedParameters();
         }
 
+        public Game5x5(int width, int height, NecessaryData startData)
+        {
+            InitializeComponent();
+            this.width = width;
+            this.height = height;
+            setStartedParameters(startData);
+        }
+
+        private void setStartedParameters(NecessaryData data)
+        {
+            this.Size = new Size(width, height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            maxScreenResolution();
+            board2D = data.board;
+            moveCount = data.pmoveCount;
+            symbolValue = data.psymbolValue;
+            if (symbolValue == 0)
+                symbol = "O";
+            else
+                symbol = "X";
+            lblTurnDisplay.Text = "Ruch: " + symbol;
+        }
+
         private void setStartedParameters()
         {
             this.Size = new Size(width, height);
@@ -124,17 +147,6 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             int nr = btn.TabIndex;//Int32.Parse(btn.Text);
             Console.WriteLine(nr);
             board2D[nr/ chessSize, nr% chessSize] = symbolValue; // nr/5 to wiersz, a nr%5 to kolumna
-
-            //string text = "";//(nr / 5).ToString() + " " + (nr % 5).ToString();
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    for (int j = 0; j < 5; j++)
-            //        text += board2D[i, j].ToString() + " ";
-            //    text += "\n";
-            //}
-            //File.AppendAllText("D:\\Zapisy_programow_C#\\KolkoIKrzyzykPrototyp\\xd.txt", idx.ToString() + Environment.NewLine);
-            //File.WriteAllText("D:\\Zapisy_programow_C#\\KolkoIKrzyzykPrototyp\\xd.txt", text);
-
             int choice = -1;
             int wayToWin = Check.checkIfEndGame(board2D, ++moveCount, chessSize, nr%chessSize, nr/chessSize, 4, ref listWinnerPositions);
             if(wayToWin != 0)
@@ -237,30 +249,6 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 FileWithData.Save(saveFileDialog.FileName, saveData);
-        }
-
-        public Game5x5(int width, int height, NecessaryData startData)
-        {
-            InitializeComponent();
-            this.width = width;
-            this.height = height;
-            setStartedParameters(startData);
-        }
-
-
-        private void setStartedParameters(NecessaryData data)
-        {
-            this.Size = new Size(width, height);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            maxScreenResolution();
-            board2D = data.board;
-            moveCount = data.pmoveCount;
-            symbolValue = data.psymbolValue;
-            if (symbolValue == 0)
-                symbol = "O";
-            else
-                symbol = "X";
-            lblTurnDisplay.Text = "Ruch: " + symbol;
         }
     }
 }
