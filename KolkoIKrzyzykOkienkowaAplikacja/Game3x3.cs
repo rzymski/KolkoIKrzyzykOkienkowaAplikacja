@@ -242,16 +242,6 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             this.StartPosition = FormStartPosition.CenterScreen;
             maxScreenResolution();
             board2D = data.board;
-            //for(int i=0; i<chessSize; i++)
-            //{
-            //    for (int j = 0; j < chessSize; j++)
-            //    {
-            //        if (board2D[i, j] == 1)
-            //            buttons[i * chessSize + j].Text = "X";
-            //        else if(board2D[i, j] == 0)
-            //            buttons[i * chessSize + j].Text = "O";
-            //    }
-            //}
             moveCount = data.pmoveCount;
             symbolValue = data.psymbolValue;
             if (symbolValue == 0)

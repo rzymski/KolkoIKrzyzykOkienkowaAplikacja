@@ -152,16 +152,22 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
                 switch(fileData.pchessSize) 
                 {
                     case (3):
-                        Game3x3 myForm = new Game3x3(width, height, fileData);
+                        Game3x3 game3x3 = new Game3x3(width, height, fileData);
                         this.Hide();
-                        myForm.ShowDialog();
+                        game3x3.ShowDialog();
                         this.Close();
                         break;
                     case (5):
-                        //Game5x5 myForm = new Game5x5(width, height, fileData);
+                        Game5x5 game5x5 = new Game5x5(width, height, fileData);
+                        this.Hide();
+                        game5x5.ShowDialog();
+                        this.Close();
                         break;
                     case (13):
-                        //Game13x13 myForm = new Game13x13(width, height, fileData);
+                        Game13x13 game13x13 = new Game13x13(width, height, fileData);
+                        this.Hide();
+                        game13x13.ShowDialog();
+                        this.Close();
                         break;
                 }
             }

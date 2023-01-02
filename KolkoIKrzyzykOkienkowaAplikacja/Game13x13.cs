@@ -16,6 +16,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
         private List<int> listWinnerPositions = new List<int>();
         private int moveCount = 0;
         private bool availableMoves = true;
+        private List<Button> buttons = new List<Button>();
 
         public Game13x13()
         {
@@ -72,6 +73,19 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
         private void Game13x13_Load(object sender, EventArgs e)
         {
             ButtonArray();
+            //przerysowanie tablicy buttonow
+            for (int i = 0; i < chessSize; i++)
+            {
+                for (int j = 0; j < chessSize; j++)
+                {
+                    if (board2D[i, j] == 1)
+                        buttons[i * chessSize + j].Text = "X";
+                    else if (board2D[i, j] == 0)
+                        buttons[i * chessSize + j].Text = "O";
+                }
+            }
+            for (int i = 0; i < buttons.Count; i++)
+                buttons[i].Font = new Font("Arial", buttons[i].Height / 2, FontStyle.Bold);
         }
 
         public void ButtonArray()
@@ -83,6 +97,7 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
                 btn.Text = "";
                 btn.Click += btn_Click;
                 flowLayoutPanel1.Controls.Add(btn);
+                buttons.Add(btn);
             }
         }
 
@@ -181,12 +196,59 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
         private void btnMenu_Paint(object sender, PaintEventArgs e)
         {
             btnMenu.Size = new Size(100, 50);
-            btnMenu.Location = new Point(30, 30);
+            btnMenu.Location = new Point(width - 50 - 30 - btnMenu.Width, 30);
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
             goToMenu();
+        }
+
+        private void btnSave_Paint(object sender, PaintEventArgs e)
+        {
+            btnSave.Size = new Size(250, 50);
+            btnSave.Location = new Point(30, 30);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            NecessaryData saveData = new NecessaryData
+            {
+                board = board2D,
+                pchessSize = chessSize,
+                psymbolValue = symbolValue,
+                pmoveCount = moveCount,
+            };
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "My own extension (*.moe)|*.moe";
+            saveFileDialog.RestoreDirectory = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                FileWithData.Save(saveFileDialog.FileName, saveData);
+        }
+
+        public Game13x13(int width, int height, NecessaryData startData)
+        {
+            InitializeComponent();
+            this.width = width;
+            this.height = height;
+            setStartedParameters(startData);
+        }
+
+
+        private void setStartedParameters(NecessaryData data)
+        {
+            this.Size = new Size(width, height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            maxScreenResolution();
+            board2D = data.board;
+            moveCount = data.pmoveCount;
+            symbolValue = data.psymbolValue;
+            if (symbolValue == 0)
+                symbol = "O";
+            else
+                symbol = "X";
+            lblTurnDisplay.Text = "Ruch: " + symbol;
         }
     }
 }
