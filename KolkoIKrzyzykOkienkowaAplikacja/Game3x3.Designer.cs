@@ -32,6 +32,7 @@
             this.lblTurnDisplay = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -70,7 +71,7 @@
             // 
             this.btnMenu.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMenu.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnMenu.Location = new System.Drawing.Point(25, 12);
+            this.btnMenu.Location = new System.Drawing.Point(1459, 12);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(97, 46);
             this.btnMenu.TabIndex = 6;
@@ -79,11 +80,25 @@
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             this.btnMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.btnMenu_Paint);
             // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.Location = new System.Drawing.Point(25, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(97, 46);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Zapisz grę";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Paint += new System.Windows.Forms.PaintEventHandler(this.btnSave_Paint);
+            // 
             // Game3x3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2544, 1401);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblTurnDisplay);
@@ -103,5 +118,6 @@
         private Label lblTurnDisplay;
         private Button btnExit;
         private Button btnMenu;
+        private Button btnSave;
     }
 }

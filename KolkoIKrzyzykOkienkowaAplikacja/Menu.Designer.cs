@@ -81,6 +81,7 @@
             this.btnLoad.TabIndex = 2;
             this.btnLoad.Text = "LOAD GAME";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             this.btnLoad.Paint += new System.Windows.Forms.PaintEventHandler(this.btnLoad_Paint);
             // 
             // btnStart2

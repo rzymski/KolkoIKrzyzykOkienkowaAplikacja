@@ -140,5 +140,31 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             LabelTitle.Text = "KÓŁKO I KRZYŻYK";
             LabelTitle.Font = new Font("Arial", height/10, FontStyle.Bold);
         }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "My own extension (*.moe)|*.moe";
+            openFileDialog.RestoreDirectory = true;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                NecessaryData fileData = FileWithData.Load<NecessaryData>(openFileDialog.FileName);
+                switch(fileData.pchessSize) 
+                {
+                    case (3):
+                        Game3x3 myForm = new Game3x3(width, height, fileData);
+                        this.Hide();
+                        myForm.ShowDialog();
+                        this.Close();
+                        break;
+                    case (5):
+                        //Game5x5 myForm = new Game5x5(width, height, fileData);
+                        break;
+                    case (13):
+                        //Game13x13 myForm = new Game13x13(width, height, fileData);
+                        break;
+                }
+            }
+        }
     }
 }
