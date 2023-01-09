@@ -21,12 +21,10 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             }
             catch (SerializationException e)
             {
-                //Console.WriteLine("Failed to serialize. Reason: " + e.Message);
                 throw;
             }
             catch (Exception e)
             {
-                //Console.WriteLine(e.Message);
                 throw;
             }
             finally
@@ -47,12 +45,10 @@ namespace KolkoIKrzyzykOkienkowaAplikacja
             }
             catch (SerializationException e)
             {
-                //Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
                 throw;
             }
             catch (Exception e)
             {
-               // Console.WriteLine(e.Message);
                 throw;
             }
             finally
